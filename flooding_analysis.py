@@ -155,7 +155,7 @@ axes_vvvh[2].set_title("VV*VH filter Flood Mask")
 axes_vvvh[2].axis("off")
 plt.tight_layout()
 
-fig_vv.savefig("flood_detection.png", dpi=300)
+fig_vv.savefig("flood_detection_vv.png", dpi=300)
 fig_vh.savefig("flood_detection_vh.png", dpi=300)
 fig_vvvh.savefig("flood_detection_vvvh.png", dpi=300)
 

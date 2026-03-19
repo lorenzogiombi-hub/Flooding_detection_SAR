@@ -3,6 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage import median_filter, binary_opening
 import os
+import matplotlib as mpl
+
+# Cosmetic parameters and plotting settings
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
+
+font_size = 16
+mpl.rcParams.update({'font.size': font_size})
+mpl.rcParams.update({'lines.linewidth': 1.5})
+mpl.rcParams.update({'axes.linewidth': 1.})
+mpl.rcParams.update({'axes.labelsize': font_size+1})
+mpl.rcParams.update({'xtick.labelsize': font_size})
+mpl.rcParams.update({'ytick.labelsize': font_size})
+mpl.rcParams.update({'legend.fontsize': 16})
 
 
 DATA_FOLDER_before = "Data/Larkana_2022_06_19"  # Adjust this path to your data folder
@@ -49,24 +63,22 @@ flood_clean = binary_opening(flood_mask, structure=np.ones((3,3))) # The opening
                                                                    # the dilation of the erosion of the image by the structuring element
 
 
+
 # 7. Visualization
-plt.figure(figsize=(15,5))
-plt.subplot(1,3,1)
-plt.imshow(before_db, cmap="gray")
-plt.title("Before (dB)")
-plt.axis("off")
-
-plt.subplot(1,3,2)
-plt.imshow(after_db, cmap="gray")
-plt.title("After (dB)")
-plt.axis("off")
-
-plt.subplot(1,3,3)
-plt.imshow(flood_clean, cmap="Blues")
-plt.title("Detected Flood")
-plt.axis("off")
-
+fig, axes = plt.subplots(1, 3, figsize=(14, 6))
+axes[0].imshow(before_db, cmap="gray")
+axes[0].set_title("Before Flooding (2022.06.19)")
+axes[0].axis("off") 
+axes[1].imshow(after_db, cmap="gray")
+axes[1].set_title("After Flooding (2022.08.22)")
+axes[1].axis("off")
+axes[2].imshow(flood_clean, cmap="Blues")
+axes[2].set_title("Detected Flood")
+axes[2].axis("off")
+plt.tight_layout()
 plt.show()
+
+fig.savefig("flood_detection.png", dpi=300)
 
 
 # 8. Save result

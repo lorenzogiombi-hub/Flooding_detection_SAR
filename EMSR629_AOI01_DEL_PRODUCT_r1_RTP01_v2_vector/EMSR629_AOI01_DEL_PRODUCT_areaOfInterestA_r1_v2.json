@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "emsr_id": "EMSR629", "glide_no": "Not Applicable", "area_id": "01", "locality": "Larkana", "map_type": "997" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 68.440280, 27.457970 ], [ 68.074763, 27.456021 ], [ 68.072742, 27.696652 ], [ 68.439057, 27.698620 ], [ 68.440280, 27.457970 ] ] ] } }
+
+]
+}

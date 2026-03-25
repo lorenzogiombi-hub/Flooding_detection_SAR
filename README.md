@@ -72,6 +72,8 @@ Here are some examples of images for our case study
 Finally we validate the code against the official report of [Copernicus EMS](https://emergency.copernicus.eu) (Emergency Management Service). For the 2022 Pakistan floods the activation code is [EMSR629](https://mapping.emergency.copernicus.eu/activations/EMSR629/). The flood extent is contained in the file observed_event.shp
 
 This Figure shows a comparison between the areo of interest analized by Copernicus (in color) and the area of interest used in this project (black and white)
+![Overlap between code flood mask and reference flood mask](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/reference_observation_overlap.png)
+
 
 Then we quantify the detected flooded areas in our code compared to the reference case. 
 Comparing each flooded mask with the reference case, four possibilities arise 

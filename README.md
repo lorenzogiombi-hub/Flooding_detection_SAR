@@ -67,3 +67,58 @@ Here are some examples of images for our case study
 ![VH flood detection](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/flood_detection_vh.png)
 ![VVVH flood detection](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/flood_detection_vvvh.png)
 
+
+### Validation against a reference flood mask
+Finally we validate the code against the official report of [Copernicus EMS](https://emergency.copernicus.eu) (Emergency Management Service). For the 2022 Pakistan floods the activation code is [EMSR629](https://mapping.emergency.copernicus.eu/activations/EMSR629/). The flood extent is contained in the file observed_event.shp
+
+This Figure shows a comparison between the areo of interest analized by Copernicus (in color) and the area of interest used in this project (black and white)
+
+Then we quantify the detected flooded areas in our code compared to the reference case. 
+Comparing each flooded mask with the reference case, four possibilities arise 
+
+|   | Reference predicts FLOOD | Reference predicts NO FLOOD |
+|  ------------- | ------------- | ------------- |
+| Code predicts FLOOD | TP          | FP         |
+| Code pridicts NO FLOOD  | FN       | TN     |
+
+where TP = True Positive, TN = True Negative, FP = False Positive, and FN = False Negative.
+Then we measure 
+- Precision = TP / (TP + FP) --> percentage (normalized to 1) of detected flood pixels that correspond to actual flood. 
+- Recall = TP / (TP + FN) --> percentage of flooded pixel detected by this pipeline.
+- F1 = 2 * precision * recall / (precision + recall) --> harmonic mean of Precision and Recall
+- Intersection over Union = TP / (TP + FP + FN) -->  Area of overlap/area of union between the code mask and the reference mask. 
+- Accuracy = (TP + TN) / (TP + FP + FN + TN) --> percentage of pixel classified correcly
+
+The output of this example run is
+```
+── Flooded area estimates ──────────────────────────
+  VV-only   : 382.5 km²
+  VH-only   : 183.8 km²
+  VV×VH     : 428.8 km²
+
+── Validation against reference mask ───────────────
+
+  VV-only:
+    Precision : 0.827
+    Recall    : 0.693
+    F1 score  : 0.754
+    IoU       : 0.605
+    Accuracy  : 0.771
+    TP=1,648,644  FP=344,484  FN=729,859  TN=1,969,513
+
+  VH-only:
+    Precision : 0.660
+    Recall    : 0.266
+    F1 score  : 0.379
+    IoU       : 0.234
+    Accuracy  : 0.558
+    TP=631,669  FP=325,965  FN=1,746,834  TN=1,988,032
+
+  VV×VH:
+    Precision : 0.797
+    Recall    : 0.749
+    F1 score  : 0.772
+    IoU       : 0.628
+    Accuracy  : 0.776
+    TP=1,780,397  FP=454,410  FN=598,106  TN=1,859,587
+```

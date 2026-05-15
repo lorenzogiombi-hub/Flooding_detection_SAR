@@ -65,7 +65,7 @@ Otsu finds a threshold that maximizes separation between two classes (no manual 
 Here are some examples of images for our case study
 ![VV flood detection](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/flood_detection_vv.png)
 ![VH flood detection](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/flood_detection_vh.png)
-![VVVH flood detection](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/flood_detection_vvvh.png)
+![VVVH flood detection](https://github.com/lorenzogiombi-hub/Flooding_detection_SAR/blob/main/flood_detection_comparison.png)
 
 
 ### Validation against a reference flood mask
